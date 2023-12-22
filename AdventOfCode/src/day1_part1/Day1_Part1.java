@@ -19,19 +19,19 @@ public class Day1_Part1 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        String filePath = "src\\file\\day1.txt";
+        String filePath = "AdventOfCode\\AdventOfCode\\src\\file\\day1.txt";
         int sum = 0;
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
-            
+
             while ((line = reader.readLine()) != null) {
                 for (int left = 0; left < line.length(); left++) {
                     if (Character.isDigit(line.charAt(left))) {
                         sum += Character.getNumericValue(line.charAt(left)) * 10;
                         break;
                     }
-                    
+
                 }
                 System.out.println(sum);
 
@@ -51,5 +51,5 @@ public class Day1_Part1 {
             e.printStackTrace();
         }
     }
-    
+
 }

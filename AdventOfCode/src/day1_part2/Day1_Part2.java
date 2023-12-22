@@ -11,8 +11,8 @@ import java.util.HashMap;
  */
 // final  class letters {
 //     HashMap<Character, HashMap<String, Integer>> lettersMap = new HashMap<>();
-    
-//     final void 
+
+//     final void
 // }
 
 public class Day1_Part2 {
@@ -26,7 +26,7 @@ public class Day1_Part2 {
     private static HashMap<Character, HashMap<String, Integer>> createMap() {
         HashMap<String, Integer> hmapO = new HashMap<String, Integer>();
         hmapO.put("one", 1);
-        
+
         HashMap<String, Integer> hmapT = new HashMap<String, Integer>();
         hmapT.put("two", 2);
         hmapT.put("three", 3);
@@ -52,7 +52,7 @@ public class Day1_Part2 {
         hmap.put('s', hmapS);
         hmap.put('e', hmapE);
         hmap.put('n', hmapN);
-        
+
         System.out.println(hmap);
         return hmap;
     }
@@ -69,9 +69,9 @@ public class Day1_Part2 {
         }
         return true;
     }
-    
+
     public static void main(String[] args) {
-        String filePath = "AdventOfCode\\src\\file\\day1.txt";
+        String filePath = "AdventOfCode\\AdventOfCode\\src\\file\\day1.txt";
 
         HashMap<Character, HashMap<String, Integer>> lettersMap = createMap();
 
@@ -80,7 +80,7 @@ public class Day1_Part2 {
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
-            
+
             while ((line = reader.readLine()) != null) {
                 for (int left = 0; left < line.length(); left++) {
                     if (Character.isDigit(line.charAt(left))) {
@@ -117,12 +117,7 @@ public class Day1_Part2 {
                         for (HashMap.Entry<String, Integer> entry : currMap.entrySet()) {
                             String key = entry.getKey();
                             Integer value = entry.getValue();
-                            // System.out.println(key);
-                            // System.out.println("here is value");
-                            // System.out.println(value);
-                            // System.out.println(line);
-                            // System.out.println(right);
-                            // System.out.println(getSubStringOf5(line, right));
+
                             String lengthOfSubstr = getSubStringOf5(line, right);
                             if (lengthOfSubstr.length() >= key.length() && checkLetterIsNumber(key, getSubStringOf5(line, right))) {
                                 sum += value;
@@ -140,5 +135,5 @@ public class Day1_Part2 {
             e.printStackTrace();
         }
     }
-    
+
 }
