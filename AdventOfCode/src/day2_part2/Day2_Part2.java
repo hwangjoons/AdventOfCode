@@ -21,7 +21,34 @@ public class Day2_Part2 {
     }
 
     private static void check(String[] currentRound, int[] powers) {
-        powers[0] = 1;
+        // powers[0] = 1;
+        for (String numAndColor : currentRound) {
+            String[] roundInfo = numAndColor.split(",");
+
+            for (String data : roundInfo) {
+                String[] roundDetail = data.split(" ");
+                int cubeNum = Integer.parseInt(roundDetail[1]);
+                String cubeColor = roundDetail[2];
+                if (cubeColor.charAt(0) == 'r') {
+                    if (powers[0] < cubeNum) {
+                        powers[0] = cubeNum;
+                    }
+                }
+
+                if (cubeColor.charAt(0) == 'g') {
+                    if (powers[1] < cubeNum) {
+                        powers[1] = cubeNum;
+                    }
+                }
+
+                if (cubeColor.charAt(0) == 'b') {
+                    if (powers[2] < cubeNum) {
+                        powers[2] = cubeNum;
+                    }
+                }
+                
+            }
+        }
     }
 
     public static void main(String[] args) {
@@ -38,15 +65,22 @@ public class Day2_Part2 {
 
                 String[] gameRounds = game[1].split(";");
                 
-                int redPower = Integer.MAX_VALUE;
-                int greenPower = Integer.MAX_VALUE;
-                int bluePower = Integer.MAX_VALUE;
-                
+                // int redPower = Integer.MAX_VALUE;
+                // int greenPower = Integer.MAX_VALUE;
+                // int bluePower = Integer.MAX_VALUE;
+                int redPower = 0;
+                int greenPower = 0;
+                int bluePower = 0;
+
                 int[] powers = { redPower, greenPower, bluePower};
 
                 check(gameRounds, powers);
-                System.out.println(powers[0]);
+                // System.out.println("hello");
+                // System.out.println(powers[0]);
 
+                int currSum = powers[0] * powers[1] * powers[2];
+                powerSum += currSum;
+                
                 // for (String gameRound : gameRounds) {
                 //     String[] roundInfo = gameRound.split(",");
                     
@@ -60,7 +94,7 @@ public class Day2_Part2 {
                 // }
             }
 
-            // System.out.println(gameIDTotal);
+            System.out.println(powerSum);
         } catch (IOException e) {
             e.printStackTrace();
         }  
